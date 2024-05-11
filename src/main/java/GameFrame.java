@@ -61,8 +61,8 @@ public class GameFrame extends JFrame implements ActionListener{
     public void initComponents(){
         JButton background=new JButton();
         background.setEnabled(false);
-        background.setIcon(new ImageIcon("background.png"));
-        background.setDisabledIcon(new ImageIcon("background.png"));
+        background.setIcon(new ImageIcon("res/"+"background.png"));
+        background.setDisabledIcon(new ImageIcon("res/"+"background.png"));
         background.setContentAreaFilled(false);
         background.setBorderPainted(false);
         background.setOpaque(false);
@@ -109,7 +109,7 @@ public class GameFrame extends JFrame implements ActionListener{
         left = new JButton ("");
         sticky = new JButton ("Make Sticky");
         slippery = new JButton ("Make Slippery");
-        pumpdir = new JButton ("Set Pump Direction");
+        pumpdir = new JButton ("Set main.java.Pump Direction");
         fix = new JButton ("Fix");
         sabotage = new JButton ("Sabotage pipe");
         carrypipe = new JButton ("Carry pipe");
@@ -119,12 +119,12 @@ public class GameFrame extends JFrame implements ActionListener{
         currentaction = new JLabel ("Current action", SwingConstants.CENTER);
         move = new JButton ("Move");
         pass = new JButton ("Pass");
-        spoints = new JLabel ("Saboteur points: 0");
-        fpoints = new JLabel ("Fixer points: 0");
+        spoints = new JLabel ("main.java.Saboteur points: 0");
+        fpoints = new JLabel ("main.java.Fixer points: 0");
         towin = new JLabel ("Points to win: " + Game.Get().GetPointsToWin());
-        fieldstatus = new JLabel ("Field status: ");
+        fieldstatus = new JLabel ("main.java.Field status: ");
         finfos = new JLabel ("*field infos*");
-        playerstatus = new JLabel ("Player status:");
+        playerstatus = new JLabel ("main.java.Player status:");
         pinfos = new JLabel ("");
         playericon = new JButton ("");
         fieldicon=new JButton[3];
@@ -243,10 +243,10 @@ public class GameFrame extends JFrame implements ActionListener{
         background.setBounds (0, 0, 1500, 900);
         getContentPane().add(jp);
 
-        ImageIcon leftImg=new ImageIcon("left.png");
-        ImageIcon disabledLeftImg=new ImageIcon("leftdisabled.png");
-        ImageIcon btn=new ImageIcon("button.png");
-        ImageIcon disabledbtn=new ImageIcon("disabledbutton.png");
+        ImageIcon leftImg=new ImageIcon("res/"+"left.png");
+        ImageIcon disabledLeftImg=new ImageIcon("res/"+"leftdisabled.png");
+        ImageIcon btn=new ImageIcon("res/"+"button.png");
+        ImageIcon disabledbtn=new ImageIcon("res/"+"disabledbutton.png");
         SetButtonStyle(left, leftImg, disabledLeftImg, 0);
         SetButtonStyle(right, leftImg, disabledLeftImg, 180);
         SetButtonStyle(up, leftImg, disabledLeftImg, 90);
@@ -294,22 +294,22 @@ public class GameFrame extends JFrame implements ActionListener{
         playerBackground.setBorderPainted(false);
         playerBackground.setOpaque(false);
         playerBackground.setBounds (37, 742, 470, 146);
-        playerBackground.setIcon(new ImageIcon("bigbutton.png"));
-        playerBackground.setDisabledIcon(new ImageIcon("bigbutton.png"));
+        playerBackground.setIcon(new ImageIcon("res/"+"bigbutton.png"));
+        playerBackground.setDisabledIcon(new ImageIcon("res/"+"bigbutton.png"));
         fieldBackground.setEnabled(false);
         fieldBackground.setContentAreaFilled(false);
         fieldBackground.setBorderPainted(false);
         fieldBackground.setOpaque(false);
         fieldBackground.setBounds (572, 742, 470, 146);
-        fieldBackground.setIcon(new ImageIcon("bigbutton.png"));
-        fieldBackground.setDisabledIcon(new ImageIcon("bigbutton.png"));
+        fieldBackground.setIcon(new ImageIcon("res/"+"bigbutton.png"));
+        fieldBackground.setDisabledIcon(new ImageIcon("res/"+"bigbutton.png"));
         pointBackground.setEnabled(false);
         pointBackground.setContentAreaFilled(false);
         pointBackground.setBorderPainted(false);
         pointBackground.setOpaque(false);
         pointBackground.setBounds (998, 742, 470, 146);
-        pointBackground.setIcon(new ImageIcon("middlebutton.png"));
-        pointBackground.setDisabledIcon(new ImageIcon("middlebutton.png"));
+        pointBackground.setIcon(new ImageIcon("res/"+"middlebutton.png"));
+        pointBackground.setDisabledIcon(new ImageIcon("res/"+"middlebutton.png"));
     }
 
     public void SetButtonStyle(JButton button, ImageIcon img, ImageIcon disabledimg, int angle ){
@@ -349,7 +349,7 @@ public class GameFrame extends JFrame implements ActionListener{
     public void DrawFieldIcon(int layer_number, Field f){
         ArrayList<String> field=f.GetStatus();
         if(layer_number==0){
-            if(field.get(0).equals("Pipe")){
+            if(field.get(0).equals("main.java.Pipe")){
                 if(field.get(10).equals("left") || field.get(10).equals("right")){
                     if(!field.get(7).equals("0")){
                         if(!field.get(8).equals("0")){
@@ -405,37 +405,37 @@ public class GameFrame extends JFrame implements ActionListener{
 
         }
         if(layer_number==1){
-            if(field.get(0).equals("Pipe") && field.get(5).equals("true")){
+            if(field.get(0).equals("main.java.Pipe") && field.get(5).equals("true")){
                 if(field.get(10).equals("left") || field.get(10).equals("right")) SetIcon(layer_number, "brokenpipebig");
                 else SetIcon(layer_number, "brokenpipebigrotated");
             }
-            else if(field.get(0).equals("Pipe") && field.get(5).equals("false")){
+            else if(field.get(0).equals("main.java.Pipe") && field.get(5).equals("false")){
                 if(field.get(10).equals("left") || field.get(10).equals("right")) SetIcon(layer_number, "pipebig");
                 else SetIcon(layer_number, "pipebigrotated");
             }
-            else if(field.get(0).equals("Pump") && field.get(5).equals("true")) {
+            else if(field.get(0).equals("main.java.Pump") && field.get(5).equals("true")) {
                 SetIcon(layer_number, "brokenpumpbig");
             }
-            else if(field.get(0).equals("Pump") && field.get(5).equals("false")) {
+            else if(field.get(0).equals("main.java.Pump") && field.get(5).equals("false")) {
                 SetIcon(layer_number, "pumpbig");
             }
-            else if(field.get(0).equals("Fountain")) {
+            else if(field.get(0).equals("main.java.Fountain")) {
                 SetIcon(layer_number, "fountainbig");
             }
-            else if(field.get(0).equals("Tank")) {
+            else if(field.get(0).equals("main.java.Tank")) {
                 SetIcon(layer_number, "tankbig");
             }
-            else if(field.get(0).equals("BlankField")) {
+            else if(field.get(0).equals("main.java.BlankField")) {
                 SetIcon(layer_number, "blankfieldbig");
             }
         }
         if(layer_number==2){
             SetIcon(layer_number, "blankfieldbig");
-            if(field.get(0).equals("Pipe") && field.get(6).equals("true")){
+            if(field.get(0).equals("main.java.Pipe") && field.get(6).equals("true")){
                 if(field.get(10).equals("left") || field.get(10).equals("right")) SetIcon(layer_number, "waterbig");
                 else SetIcon(layer_number, "waterrotatedbig");
             }
-            if(field.get(0).equals("Pipe") && field.get(6).equals("false")){
+            if(field.get(0).equals("main.java.Pipe") && field.get(6).equals("false")){
                 SetIcon(layer_number, "blankfieldbig");
             }
         }
@@ -449,20 +449,20 @@ public class GameFrame extends JFrame implements ActionListener{
         finfos.setText("<html>Type: "+status.get(0)+"<br>"+
                 "Number of fixers: "+status.get(3)+"<br>"+
                 "Number of saboteurs: "+status.get(4));
-        if(status.get(0).equals("Pipe")) {
+        if(status.get(0).equals("main.java.Pipe")) {
             finfos.setText(finfos.getText() + "<br>Broken: " + status.get(5) +
                 "<br>Has water: " + status.get(6) +
                 "<br>Undestroyable for: " + status.get(7) + " round(s)" +
                 "<br>Slippery for: " + status.get(8) + " round(s)" +
                 "<br>Sticky for: " + status.get(9) + " round(s)" + "</html>");
         }
-        else if(status.get(0).equals("Pump")) {
+        else if(status.get(0).equals("main.java.Pump")) {
             finfos.setText(finfos.getText() + "<br>Broken: " + status.get(5) +
                     "<br>Stored water: " + status.get(6) +
                     "<br>In direction: " + status.get(7) +
                     "<br>Out direction: " + status.get(8) + "</html>");
         }
-        else if(status.get(0).equals("Tank")) {
+        else if(status.get(0).equals("main.java.Tank")) {
             finfos.setText(finfos.getText() + "<br>Number of pipes: " + status.get(5) +
                     "<br>Number of pumps: " + status.get(6) + "</html>");
         }
@@ -472,8 +472,8 @@ public class GameFrame extends JFrame implements ActionListener{
      * Kiirja a csapatok pontjait
      */
     public void DrawPoints(){
-        fpoints.setText("Fixer points: " + Integer.toString(Game.Get().GetFixerPoints()));
-        spoints.setText("Saboteur points: " + Integer.toString(Game.Get().GetSaboteurPoints()));
+        fpoints.setText("main.java.Fixer points: " + Integer.toString(Game.Get().GetFixerPoints()));
+        spoints.setText("main.java.Saboteur points: " + Integer.toString(Game.Get().GetSaboteurPoints()));
     }
     public void EnableActions(ArrayList<String> actions){
         pass.setEnabled(true);
@@ -623,7 +623,7 @@ public class GameFrame extends JFrame implements ActionListener{
 
 
     public void SetIcon(int layer, String png){
-        ImageIcon img = new ImageIcon(png+".png");
+        ImageIcon img = new ImageIcon("res/"+png+".png");
         fieldicon[layer].setIcon(img);
         fieldicon[layer].setDisabledIcon(img);
     }
@@ -634,9 +634,9 @@ public class GameFrame extends JFrame implements ActionListener{
      */
     public void SetEndSign(String msg){
         endSign.setText(msg);
-        if(msg.equals("Game won by Fixers."))
+        if(msg.equals("main.java.Game won by Fixers."))
             endSign.setForeground(Color.CYAN);
-        else if(msg.equals("Game won by Saboteurs."))
+        else if(msg.equals("main.java.Game won by Saboteurs."))
             endSign.setForeground(Color.YELLOW);
         else
         endSign.setForeground(Color.darkGray);

@@ -76,7 +76,7 @@ public class Pipe extends Active{
 
     /**
      * eltavolitja a csovet a halozatbol
-     * @param f Fixer, aki felveszi
+     * @param f main.java.Fixer, aki felveszi
      */
     public void Remove(Fixer f){
         if(GetHasWater())
@@ -422,7 +422,7 @@ public class Pipe extends Active{
      */
     public ArrayList<String> GetStatus(){
         ArrayList<String> list = new ArrayList<String>();
-        list.add("Pipe");
+        list.add("main.java.Pipe");
         list.add(Integer.toString(Game.Get().GetMap().GetXIndex(this)));
         list.add(Integer.toString(Game.Get().GetMap().GetYIndex(this)));
         int s_number=0, f_number=0;

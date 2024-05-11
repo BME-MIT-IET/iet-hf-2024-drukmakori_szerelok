@@ -68,8 +68,8 @@ public class SettingsFrame extends JFrame implements ActionListener{
         setPlayerCount = new JButton ("");
         players = new JLabel ("Players/team");
         players_error = new JLabel ("Between 2 and 4");
-        saboteur = new JLabel ("Saboteur names");
-        fixer = new JLabel ("Fixer names");
+        saboteur = new JLabel ("main.java.Saboteur names");
+        fixer = new JLabel ("main.java.Fixer names");
         players_tb = new JTextField ("2",5);
         name = new JTextField (5);
         name2 = new JTextField (5);
@@ -106,22 +106,22 @@ public class SettingsFrame extends JFrame implements ActionListener{
         f2.setEnabled (false);
         f3.setEnabled (false);
         f4.setEnabled (false);
-        s1.setIcon(new ImageIcon("saboteur1.png"));
-        s1.setDisabledIcon(new ImageIcon("saboteur1.png"));
-        s2.setIcon(new ImageIcon("saboteur2.png"));
-        s2.setDisabledIcon(new ImageIcon("saboteur2.png"));
-        s3.setIcon(new ImageIcon("saboteur3.png"));
-        s3.setDisabledIcon(new ImageIcon("saboteur3.png"));
-        s4.setIcon(new ImageIcon("saboteur4.png"));
-        s4.setDisabledIcon(new ImageIcon("saboteur4.png"));
-        f1.setIcon(new ImageIcon("fixer1.png"));
-        f1.setDisabledIcon(new ImageIcon("fixer1.png"));
-        f2.setIcon(new ImageIcon("fixer2.png"));
-        f2.setDisabledIcon(new ImageIcon("fixer2.png"));
-        f3.setIcon(new ImageIcon("fixer3.png"));
-        f3.setDisabledIcon(new ImageIcon("fixer3.png"));
-        f4.setIcon(new ImageIcon("fixer4.png"));
-        f4.setDisabledIcon(new ImageIcon("fixer4.png"));
+        s1.setIcon(new ImageIcon("res/"+"saboteur1.png"));
+        s1.setDisabledIcon(new ImageIcon("res/"+"saboteur1.png"));
+        s2.setIcon(new ImageIcon("res/"+"saboteur2.png"));
+        s2.setDisabledIcon(new ImageIcon("res/"+"saboteur2.png"));
+        s3.setIcon(new ImageIcon("res/"+"saboteur3.png"));
+        s3.setDisabledIcon(new ImageIcon("res/"+"saboteur3.png"));
+        s4.setIcon(new ImageIcon("res/"+"saboteur4.png"));
+        s4.setDisabledIcon(new ImageIcon("res/"+"saboteur4.png"));
+        f1.setIcon(new ImageIcon("res/"+"fixer1.png"));
+        f1.setDisabledIcon(new ImageIcon("res/"+"fixer1.png"));
+        f2.setIcon(new ImageIcon("res/"+"fixer2.png"));
+        f2.setDisabledIcon(new ImageIcon("res/"+"fixer2.png"));
+        f3.setIcon(new ImageIcon("res/"+"fixer3.png"));
+        f3.setDisabledIcon(new ImageIcon("res/"+"fixer3.png"));
+        f4.setIcon(new ImageIcon("res/"+"fixer4.png"));
+        f4.setDisabledIcon(new ImageIcon("res/"+"fixer4.png"));
 
         jp.setPreferredSize (new Dimension (930, 647));
         jp.setLayout (null);
@@ -223,8 +223,8 @@ public class SettingsFrame extends JFrame implements ActionListener{
         getContentPane().add(jp);
         buttonsDisabler();
 
-        background.setIcon(new ImageIcon("2.png"));
-        background.setDisabledIcon(new ImageIcon("2.png"));
+        background.setIcon(new ImageIcon("res/"+"2.png"));
+        background.setDisabledIcon(new ImageIcon("res/"+"2.png"));
         background.setEnabled(false);
         background.setOpaque(false);
         background.setContentAreaFilled(false);
@@ -277,7 +277,7 @@ public class SettingsFrame extends JFrame implements ActionListener{
         field.setForeground(Color.getHSBColor(color2[0], color2[1], color2[2]));
     }
     public void SetButtonStyle(JButton button, String img){
-        button.setIcon(new ImageIcon(img+".png"));
+        button.setIcon(new ImageIcon("res/"+img+".png"));
         button.setOpaque(false);
         button.setContentAreaFilled(false);
     }

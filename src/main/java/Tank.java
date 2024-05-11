@@ -261,7 +261,7 @@ public class Tank extends Field{
      */
     public ArrayList<String> GetStatus(){
         ArrayList<String> list = new ArrayList<String>();
-        list.add("Tank");
+        list.add("main.java.Tank");
         list.add(Integer.toString(Game.Get().GetMap().GetXIndex(this)));
         list.add(Integer.toString(Game.Get().GetMap().GetYIndex(this)));
 
