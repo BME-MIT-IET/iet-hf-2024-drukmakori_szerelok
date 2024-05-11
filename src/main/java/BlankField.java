@@ -11,7 +11,7 @@ public class BlankField extends Field{
      */
     private String referenceID;
     /**
-     * A main.java.BlankField mindig kicserelheto lesz
+     * A BlankField mindig kicserelheto lesz
      */
     public BlankField(String refID){
         SetReplacable(true);
@@ -64,7 +64,7 @@ public class BlankField extends Field{
 
     public ArrayList<String> GetStatus(){
         ArrayList<String> list = new ArrayList<String>();
-        list.add("main.java.BlankField");
+        list.add("BlankField");
         list.add(Integer.toString(Game.Get().GetMap().GetXIndex(this)));
         list.add(Integer.toString(Game.Get().GetMap().GetYIndex(this)));
         int s_number=0, f_number=0;

@@ -171,7 +171,7 @@ public class Fountain extends Field implements Steppable{
 
     public ArrayList<String> GetStatus(){
         ArrayList<String> list = new ArrayList<String>();
-        list.add("main.java.Fountain");
+        list.add("Fountain");
         list.add(Integer.toString(Game.Get().GetMap().GetXIndex(this)));
         list.add(Integer.toString(Game.Get().GetMap().GetYIndex(this)));
         int s_number=0, f_number=0;

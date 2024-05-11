@@ -295,7 +295,7 @@ public class Pump extends Active{
 
     public ArrayList<String> GetStatus(){
         ArrayList<String> list = new ArrayList<String>();
-        list.add("main.java.Pump");
+        list.add("Pump");
         list.add(Integer.toString(Game.Get().GetMap().GetXIndex(this)));
         list.add(Integer.toString(Game.Get().GetMap().GetYIndex(this)));
         int s_number=0, f_number=0;

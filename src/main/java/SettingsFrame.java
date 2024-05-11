@@ -68,8 +68,8 @@ public class SettingsFrame extends JFrame implements ActionListener{
         setPlayerCount = new JButton ("");
         players = new JLabel ("Players/team");
         players_error = new JLabel ("Between 2 and 4");
-        saboteur = new JLabel ("main.java.Saboteur names");
-        fixer = new JLabel ("main.java.Fixer names");
+        saboteur = new JLabel ("Saboteur names");
+        fixer = new JLabel ("Fixer names");
         players_tb = new JTextField ("2",5);
         name = new JTextField (5);
         name2 = new JTextField (5);

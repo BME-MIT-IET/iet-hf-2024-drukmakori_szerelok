@@ -57,10 +57,10 @@ public class Game implements Steppable {
         int saboteurSecond=1;
         int playerNumber=0;
         for(int i=0;i<PlayerCount;i++){
-            players.add(new Fixer("main.java.Fixer"+Integer.toString(fixerNumber++), "fixer" + Integer.toString(i + 1) + "big.png"));
+            players.add(new Fixer("Fixer"+Integer.toString(fixerNumber++), "fixer" + Integer.toString(i + 1) + "big.png"));
             map.GetFields().get(0).get(fixerSecond).AddPlayer(players.get(playerNumber));
             playerNumber++;
-            players.add(new Saboteur("main.java.Saboteur"+Integer.toString(saboteurNumber++), "saboteur" + Integer.toString(i + 1) + "big.png"));
+            players.add(new Saboteur("Saboteur"+Integer.toString(saboteurNumber++), "saboteur" + Integer.toString(i + 1) + "big.png"));
             map.GetFields().get(19).get(saboteurSecond).AddPlayer(players.get(playerNumber));
             playerNumber++;
             fixerSecond+=3;
@@ -93,10 +93,10 @@ public class Game implements Steppable {
         int saboteurSecond=1;
         int playerNumber=0;
         for(int i=0;i<PlayerCount;i++){
-            players.add(new Fixer("main.java.Fixer"+Integer.toString(fixerNumber++), "fixer" + Integer.toString(i + 1) + "big.png"));
+            players.add(new Fixer("Fixer"+Integer.toString(fixerNumber++), "fixer" + Integer.toString(i + 1) + "big.png"));
             map.GetFields().get(0).get(fixerSecond).AddPlayer(players.get(playerNumber));
             playerNumber++;
-            players.add(new Saboteur("main.java.Saboteur"+Integer.toString(saboteurNumber++), "saboteur" + Integer.toString(i + 1) + "big.png"));
+            players.add(new Saboteur("Saboteur"+Integer.toString(saboteurNumber++), "saboteur" + Integer.toString(i + 1) + "big.png"));
             map.GetFields().get(19).get(saboteurSecond).AddPlayer(players.get(playerNumber));
             playerNumber++;
             fixerSecond+=3;
@@ -160,10 +160,10 @@ public class Game implements Steppable {
      */
     public void EndGame(){
         if(fixerPoints>=pointsToWin && saboteurPoints<pointsToWin){
-            gameEndMessage="main.java.Game won by Fixers.";
+            gameEndMessage="Game won by Fixers.";
         }
         else if(fixerPoints<pointsToWin && saboteurPoints>=pointsToWin){
-            gameEndMessage="main.java.Game won by Saboteurs.";
+            gameEndMessage="Game won by Saboteurs.";
         }
         else if(fixerPoints>=pointsToWin && saboteurPoints>=pointsToWin){
             gameEndMessage="Draw, game won by both teams.";

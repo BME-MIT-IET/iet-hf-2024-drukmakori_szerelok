@@ -58,7 +58,7 @@ public class GameField extends JPanel{
             }
         }
         if(layer_number==1){
-            if(field.get(0).equals("main.java.Pipe")){
+            if(field.get(0).equals("Pipe")){
                 if(field.get(10).equals("left") || field.get(10).equals("right")){
                     if(!field.get(7).equals("0")){
                         if(!field.get(8).equals("0")){
@@ -114,37 +114,37 @@ public class GameField extends JPanel{
 
         }
         if(layer_number==2){
-            if(field.get(0).equals("main.java.Pipe") && field.get(5).equals("true")){
+            if(field.get(0).equals("Pipe") && field.get(5).equals("true")){
                 if(field.get(10).equals("left") || field.get(10).equals("right")) SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "brokenpipe");
                 else SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "brokenpiperotated");
             }
-            else if(field.get(0).equals("main.java.Pipe") && field.get(5).equals("false")){
+            else if(field.get(0).equals("Pipe") && field.get(5).equals("false")){
                 if(field.get(10).equals("left") || field.get(10).equals("right")) SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "pipe");
                 else SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "piperotated");
             }
-            else if(field.get(0).equals("main.java.Pump") && field.get(5).equals("true")) {
+            else if(field.get(0).equals("Pump") && field.get(5).equals("true")) {
                 SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "brokenpump");
             }
-            else if(field.get(0).equals("main.java.Pump") && field.get(5).equals("false")) {
+            else if(field.get(0).equals("Pump") && field.get(5).equals("false")) {
                 SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "pump");
             }
-            else if(field.get(0).equals("main.java.Fountain")) {
+            else if(field.get(0).equals("Fountain")) {
                 SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "fountain");
             }
-            else if(field.get(0).equals("main.java.Tank")) {
+            else if(field.get(0).equals("Tank")) {
                 SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "tank");
             }
-            else if(field.get(0).equals("main.java.BlankField")) {
+            else if(field.get(0).equals("BlankField")) {
                 SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "blankfield");
             }
         }
         if(layer_number==3){
             SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "blankfield");
-            if(field.get(0).equals("main.java.Pipe") && field.get(6).equals("true")){
+            if(field.get(0).equals("Pipe") && field.get(6).equals("true")){
                 if(field.get(10).equals("left") || field.get(10).equals("right")) SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "water");
                 else SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "waterrotated");
             }
-            if(field.get(0).equals("main.java.Pipe") && field.get(6).equals("false")){
+            if(field.get(0).equals("Pipe") && field.get(6).equals("false")){
                 SetBackground(Integer.parseInt(field.get(1)), Integer.parseInt(field.get(2)), "blankfield");
             }
         }
