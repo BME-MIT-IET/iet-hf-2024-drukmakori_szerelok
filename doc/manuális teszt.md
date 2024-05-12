@@ -302,7 +302,9 @@ Az elvárt viselkedés történt.
 
 ![](t23.png)
 
+## Összefoglalás
 
+A szerintünk átfogó és részletes tesztek megírása után végre is hajtottuk őket, és mindegyikre az elvárt viselkedést kaptuk. A program ezek alapján helyesen funkcionálónak tűnik.
 
 
 
