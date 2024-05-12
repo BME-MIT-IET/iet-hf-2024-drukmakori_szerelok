@@ -47,7 +47,7 @@ Alapvetően 3 esetet definiáltunk:
 
 ![](f2.png)
 
-**CPU**: A pass gombok megnyomása során észrevettük, hogy amikor minden játékosnak a köre véget ért akkor CPU-nak az erőforrásigénye jelentősen megugrik kb. 20%-ra . A csapat szerint egy rekurzív algoritmus (pontosabban a játékban lévő víz folyásáért felelős függvények) okozhatja ezt jelentős számítási megterhelést. TODO: pontosan melyik függvény?
+**CPU**: A pass gombok megnyomása során észrevettük, hogy amikor minden játékosnak a köre véget ért akkor CPU-nak az erőforrásigénye jelentősen megugrik kb. 20%-ra. A csapatunk szerint az UI újratöltése és a ActionHandler osztályban lévő Wordturn függvény okozhatja ezt jelentős számítási megterhelést.
 
 **Heap Memory**: Nem volt jelentős eltérés a tétlen játék állapotól. A memóriát mindig 200 Mb alatt tartotta.
 
