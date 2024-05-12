@@ -94,7 +94,7 @@ Azonban voltak problémák amelyek hiányosnak éreztük és kicsit zavarók is 
 
 - **Restart game funkció hiányossága**: Egy új játék indításához be kell zárni a játékot és újra el kell indítani a programot
 
-- **Help ablak átláthatatlan**: A help dialógus ablak nem voltak annyira tagolva a szövegek, így nehéz volt átlátni őket és az információk feltűntetése nem volt túl felhasználóbarát:
+- **Help ablak átláthatatlan**: A help dialógus ablak nem voltak annyira tagolva a szövegek, így nehéz volt átlátni őket és az információk feltűntetése se volt túl felhasználóbarát:
 
 
 ![](f6.png)
