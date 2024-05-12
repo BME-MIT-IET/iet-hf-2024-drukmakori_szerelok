@@ -81,19 +81,24 @@ Alapvetően 3 esetet definiáltunk:
 **Non-Heap Memory**: Nem volt jelentős eltérés a tétlen játék állapotól
 
 
-
-
-*A játék hiba ami miatt leállt a játék és már semilyen akciót nem tudott végrehajtani a játékos (azaz nincs zöld határvonallal kiemelt gomb az UI-on jobboldalt és semelyik gomb se reagált):*
-
-![](f5.png)
-
-
-
-
-
 ### Biztonság
 
 A játék biztonságos, nem tartalmaz számítógépre káros kódrészletet. A játék szoftver nem kér és nem táról érzékeny felhasználói adatokat. A játékot csak a gombok megnyomásával lehet játszani és input adatot csak a játék beállításánál lehet beadni, ahol jól vannak lekezelve a bekért adatok.
 
 
 ### Használhatóság
+
+A játékban minden funkció megtalálható a jobboldalt és a lehetséges interakciókat és az információkat felhasználóbarát módon vannak feltűntve.
+
+Azonban voltak problémák amelyek hiányosnak éreztük és kicsit zavarók is voltak:
+
+- **Restart game funkció hiányossága**: Egy új játék indításához be kell zárni a játékot és újra el kell indítani a programot
+
+- **Help ablak átláthatatlan**: A help dialógus ablak nem voltak annyira tagolva a szövegek, így nehéz volt átlátni őket és az információk feltűntetése nem volt túl felhasználóbarát:
+
+
+![](f6.png)
+
+- **Hibák a játékban**: A játékban volt pár hiba, ami miatt leállt a játék és már semilyen akciót nem tudott végrehajtani a játékos (azaz jobboldalt nincs zöld határvonallal kiemelt gomb az UI-on és semelyik gomb se reagált):
+
+![](f5.png)
