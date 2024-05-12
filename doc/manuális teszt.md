@@ -5,18 +5,18 @@
 
 ## Teljesítmény:
 
-Az intellij-ben beépített Profiler segítségével megvizsgáltuk a memória és a CPU kihasználtságát. Legfőbbképpen a CPU, a Heap Memory, a Threads és a Non-Heap Memory komponenseket elemeztük 30 percen át, pontosabban egy új játék indításakor és a játékot tétlenül hagytuk. Az egyes komponensek időbeli kihasználtságát egy-egy vonaldiagramban vannak ábrázolva:
+Az IntelliJ IDEA-ban beépített Profiler segítségével megvizsgáltuk a memória és a CPU kihasználtságát. Legfőbbképpen a CPU, a Heap Memory, a Threads és a Non-Heap Memory komponenseket elemeztük úgy, hogy a játékot 30 percen át futattuk, pontosabban egy új játék indítottunk és a játékot tétlenül magára hagytuk. Az egyes komponensek időbeli kihasználtságát egy-egy vonaldiagramban vannak ábrázolva:
 
 ![](f1.png)
 
 
 **CPU**: 
 
-A tétlen állapotban hagyott játék szinte nem igényelt sok CPU-t. A játék megnyitására szükség volt kb. 40%-nyi CPU , de az idő többi részében mindvégig 0% körül mozgott. A játék tehát jól kezeli a tétlen állapotot hiszen emberi interakciók nélkül nem követel jelentős CPU erőforrást, amely a program müködése szempontjából elvárt. 
+A tétlen állapotban hagyott játék szinte nem igényelt sok CPU-t. A játék megnyitására szükség volt kb. 40%-nyi CPU , de az idő többi részében mindvégig 0% körül mozgott. A játék jól működik tétlen állapototban, hiszen emberi interakciók nélkül nem követel rengetteg CPU erőforrást. 
 
 **Heap Memory**: 
 
-A iddle állapotú játék a kezdetben 121 MB-nyi memóriát fogalt, majd 20 perc elteltével 187 MB-ot foglalt azaz további 66 MB-ra volt szükség. 187 Mb után a GC felszabadított 146 MB-ot, így 41 Mb-nyi memórát foglalt a program, amely egy kis idő elteltével elkezd újra nőni. A programban feltehetően nincs memóriaszivárgás és a GC nem használt memóriákat jól fel tudja szabadítani.
+A idle állapotú játék a kezdetben 121 MB-nyi memóriát fogalt, majd 20 perc elteltével 187 MB-ot foglalt azaz további 66 MB-ra volt szükség. 187 MB után a GC felszabadított 146 MB-ot, így 41 MB-nyi memórát foglalt összesen a program, amely után egy kis idő elteltével elkezdett újra nőni. A programban feltehetően nincs memóriaszivárgás és a GC a nem használt memóriákat felszabadítja.
 
 **Threads**: 
 
@@ -24,20 +24,21 @@ A program futása során 18 szálat használ alapesetben az idők folyamán és 
 
 
 **Non-Heap Memory**: 
-JVM és a  the Java runtime environment által használt objektumokat és struktúrákat a Non-Heap Memory tárolja. Jelen esetben 29 MB-ra van szükség.
+
+JVM és a  the Java runtime environment által használt objektumokat és struktúrákat a Non-Heap Memory tárolja. Jelen esetben 29 MB-ra volt szükség mindvégig.
 
 
 ## Stressz teszt:
 
-A játék megnyitása után különböző felhasználói interakciókat próbáltunk ki egy automatikus egér kattintást megvalósító programmal (Automatic Mouse Clicker with Random & Fixed Location and Delay Interval) teszteltük, hogy felmérjük mennyire terheli a rendszert. 
+A játék megnyitása után különböző felhasználói interakciókat próbáltunk ki, azaz egy automatikus egér kattintást megvalósító programmal (Automatic Mouse Clicker with Random & Fixed Location and Delay Interval) teszteltük, hogy felmérjük mennyire terheli a rendszert. 
 
-3 esetet definiáltunk:
+Alapvetően 3 esetet definiáltunk:
 
 - Pass gomb (a játékos kör vége gomb) megnyomása 3 másodpercenként folyamatosan
 
 - Pass gomb (a játékos kör vége gomb) megnyomása másodpercenként legalább 10-szer folyamatosan
 
-- Random kiválasztással az összes lehetséges interakció egyikének megnyomása folyamatosan
+- Folyamatosan kiválasztunk egy random interakciót random kattingatásokkal
 
 
 ### Stressz teszt eredmények
@@ -46,7 +47,7 @@ A játék megnyitása után különböző felhasználói interakciókat próbál
 
 ![](f2.png)
 
-**CPU**: A pass gombok megnyomása során észrevettük, hogy a minden játékosnak a köre véget ért akkor CPU-nak az erőforrásigénye jelentősen megugrik kb. 20%-ra . A csapat szerint egy rekurzív algoritmus (pontosabban a játékban lévő víz folyási függvény) okozhatja ezt jelentős számítási megterhelést.
+**CPU**: A pass gombok megnyomása során észrevettük, hogy amikor minden játékosnak a köre véget ért akkor CPU-nak az erőforrásigénye jelentősen megugrik kb. 20%-ra . A csapat szerint egy rekurzív algoritmus (pontosabban a játékban lévő víz folyásáért felelős függvények) okozhatja ezt jelentős számítási megterhelést. TODO: pontosan melyik függvény?
 
 **Heap Memory**: Nem volt jelentős eltérés a tétlen játék állapotól. A memóriát mindig 200 Mb alatt tartotta.
 
@@ -59,7 +60,7 @@ A játék megnyitása után különböző felhasználói interakciókat próbál
 
 ![](f3.png)
 
-**CPU**: A gyakori pass gombok megnyomása során gyakran ér véget a játékosnak a köre és a  CPU-nak az erőforrásigénye mindig kb. 20%-on van. A rekurzív algoritmus okozhatja ezt jelentős számítást igényel.
+**CPU**: A gyakori pass gombok megnyomása során gyakran végetér a játékosnak a köre és a  CPU-nak az erőforrásigénye mindig kb. 20%-on volt. A rekurzív algoritmus okozhatja ezt jelentős számítást igényel.
 
 **Heap Memory**: Nem volt jelentős eltérés a tétlen játék állapotól. A memóriát mindig 200 Mb alatt tartotta.
 
@@ -67,11 +68,11 @@ A játék megnyitása után különböző felhasználói interakciókat próbál
 
 **Non-Heap Memory**: Nem volt jelentős eltérés a tétlen játék állapotól
 
-**Random kiválasztással az összes lehetséges interakció egyikének megnyomása folyamatosan**:
+**Folyamatosan kiválasztunk egy random interakciót random kattingatásokkal**:
 
 ![](f4.png)
 
-**CPU**: A gyakori random interakció gombok megnyomása a játék egy hibára futott (bug-ra) ami után a játékos nem tudott további interakciót végrehajtani és emiatt nem lehetett tovább játszani a játékot. A legnagyobb CPU igény az 30% körül mozgott és úgy 1 perc után a játék úgy 1-2%-nyi számításigénye volt szükség, ami az inaktív gombok megnyomása miatt kellett.
+**CPU**: A gyakori random interakció gombok megnyomása során a játék egy hibára futott (bug-ra), ami után a játékos nem tudott további interakciót végrehajtani, és emiatt nem lehetett tovább játszani a játékot. A legnagyobb CPU igény az 30% körül mozgott és úgy 1 perc után a játéknak úgy 1-2%-nyi számításigénye volt szükség, ami az inaktív gombok megnyomása miatt kellett. Mivel a gombok megnyomása nem csináltak semmit, ezért nem kellett szinte semmit se kiszámolni a CPU-nak.
 
 **Heap Memory**: Nem volt jelentős eltérés a tétlen játék állapotól. A memóriát mindig 200 Mb alatt tartotta.
 
@@ -82,7 +83,7 @@ A játék megnyitása után különböző felhasználói interakciókat próbál
 
 
 
-*A játék hiba ami miatt leállt a játék és már semilyen akciót nem tud végrehajtani a játékos (azaz nincs zöld határvonallal kiemelt gomb az UI-on jobboldalt és semelyik gomb sem reagál):*
+*A játék hiba ami miatt leállt a játék és már semilyen akciót nem tudott végrehajtani a játékos (azaz nincs zöld határvonallal kiemelt gomb az UI-on jobboldalt és semelyik gomb se reagált):*
 
 ![](f5.png)
 
