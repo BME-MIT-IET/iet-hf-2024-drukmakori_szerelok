@@ -1,3 +1,5 @@
+package drukmakoriSzerelok;
+
 /**
  * Interfesz, amelyet megvalosito osztalyok a kor vegen frissulnek es uj allapotba lepnek.
  */

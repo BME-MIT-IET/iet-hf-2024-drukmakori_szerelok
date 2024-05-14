@@ -1,3 +1,5 @@
+package drukmakoriSzerelok;
+
 import java.awt.*;
 import javax.swing.*;
 
