@@ -30,10 +30,12 @@ public class PlayerMoves{
     public void the_fixer_tries_to_move_to_the_neighbour_pipe() {
         player.Move(neighbour);
     }
-    @Then("the fixer should be placed on the {string} pipe")
-    public void the_fixer_should_be_placed_on_the_neighbour_pipe(String answer) {
+    @Then("the {string} should be placed on the {string} pipe")
+    public void the_fixer_should_be_placed_on_the_neighbour_pipe(String answer1, String answer2) {
         var result = player.GetField() == neighbour ? "neighbour" : "tank";
-        assertEquals(answer, result);
+        var result2 = neighbour.GetPlayer().get(0) == player  ? "fixer" : "nobody";
+        assertEquals(answer2, result);
+        assertEquals(answer1, result2);
     }
 
 
@@ -64,9 +66,13 @@ public class PlayerMoves{
         Game.Get().SetActivePlayer(player2);
         player2.Move(pump);
     }
-    @Then("{string} players should be placed on the pump")
-    public void both_players_should_be_placed_on_the_pump(String answer) {
-        String result = String.valueOf(pump.GetPlayer().size());
-        assertEquals(answer, result);
+    @Then("{string} players should be placed on the {string}")
+    public void both_players_should_be_placed_on_the_pump(String answer1, String answer2) {
+        String result1 = String.valueOf(pump.GetPlayer().size());
+        String result2 = player1.GetField() == pump ? "pump" : "other";
+        String result3 = player2.GetField() == pump ? "pump" : "other";
+        assertEquals(answer1, result1);
+        assertEquals(answer2, result2);
+        assertEquals(answer2, result3);
     }
 }
