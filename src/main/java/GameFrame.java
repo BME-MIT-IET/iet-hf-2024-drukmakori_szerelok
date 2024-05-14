@@ -294,22 +294,22 @@ public class GameFrame extends JFrame implements ActionListener{
         playerBackground.setBorderPainted(false);
         playerBackground.setOpaque(false);
         playerBackground.setBounds (37, 742, 470, 146);
-        playerBackground.setIcon(new ImageIcon("res/"+"bigbutton.png"));
-        playerBackground.setDisabledIcon(new ImageIcon("res/"+"bigbutton.png"));
+        playerBackground.setIcon(new ImageIcon("res/bigbutton.png"));
+        playerBackground.setDisabledIcon(new ImageIcon("res/bigbutton.png"));
         fieldBackground.setEnabled(false);
         fieldBackground.setContentAreaFilled(false);
         fieldBackground.setBorderPainted(false);
         fieldBackground.setOpaque(false);
         fieldBackground.setBounds (572, 742, 470, 146);
-        fieldBackground.setIcon(new ImageIcon("res/"+"bigbutton.png"));
-        fieldBackground.setDisabledIcon(new ImageIcon("res/"+"bigbutton.png"));
+        fieldBackground.setIcon(new ImageIcon("res/bigbutton.png"));
+        fieldBackground.setDisabledIcon(new ImageIcon("res/bigbutton.png"));
         pointBackground.setEnabled(false);
         pointBackground.setContentAreaFilled(false);
         pointBackground.setBorderPainted(false);
         pointBackground.setOpaque(false);
         pointBackground.setBounds (998, 742, 470, 146);
-        pointBackground.setIcon(new ImageIcon("res/"+"middlebutton.png"));
-        pointBackground.setDisabledIcon(new ImageIcon("res/"+"middlebutton.png"));
+        pointBackground.setIcon(new ImageIcon("res/middlebutton.png"));
+        pointBackground.setDisabledIcon(new ImageIcon("res/middlebutton.png"));
     }
 
     public void SetButtonStyle(JButton button, ImageIcon img, ImageIcon disabledimg, int angle ){
@@ -337,8 +337,8 @@ public class GameFrame extends JFrame implements ActionListener{
             DrawFieldIcon(i, player.GetField());
         }
 
-        playericon.setIcon(new ImageIcon(player.GetPictureName()));
-        playericon.setDisabledIcon(new ImageIcon(player.GetPictureName()));
+        playericon.setIcon(new ImageIcon("res/"+player.GetPictureName()));
+        playericon.setDisabledIcon(new ImageIcon("res/"+player.GetPictureName()));
     }
 
     /**
