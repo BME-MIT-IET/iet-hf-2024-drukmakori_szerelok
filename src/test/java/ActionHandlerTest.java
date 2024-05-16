@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
@@ -22,6 +23,12 @@ class ActionHandlerTest {
     static void initOnce() {
         gameClass = Mockito.mockStatic(Game.class);
         gameFrameClass = mockStatic(GameFrame.class);
+    }
+
+    @AfterAll
+    static void afterAll() {
+        gameClass.close();
+        gameFrameClass.close();
     }
 
     @Test
