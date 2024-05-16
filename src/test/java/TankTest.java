@@ -1,15 +1,15 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
-import java.util.Random;
-
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 
 class TankTest {
@@ -100,9 +100,8 @@ class TankTest {
 
     @Test
     void acceptWater() {
-        var gameInstance = Game.Get();
-        try (MockedStatic<Game> game = Mockito.mockStatic(Game.class)) {
-            var gameSpy = spy(gameInstance);
+        try (MockedStatic<Game> game = mockStatic(Game.class)) {
+            var gameSpy = spy(Game.class);
             game.when(Game::Get).thenReturn(gameSpy);
             var fieldMock = mock(Field.class);
             tank.AcceptWater(fieldMock);
