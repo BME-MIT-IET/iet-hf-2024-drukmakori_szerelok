@@ -1,23 +1,44 @@
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
+
+import java.util.ArrayList;
 
 class FixerTest {
     private Fixer fixer;
+    private static MockedStatic<Game> gameClass;
+    private static MockedStatic<GameFrame> gameFrameClass;
+    private static MockedStatic<Wait> waitClass;
 
     @BeforeEach
     void init() {
         fixer = new Fixer("fixer", "picture");
     }
 
+    @BeforeAll
+    static void initOnce() {
+        gameClass = Mockito.mockStatic(Game.class);
+        gameFrameClass = mockStatic(GameFrame.class);
+        waitClass = mockStatic(Wait.class);
+    }
+
+    @AfterAll
+    static void afterAll() {
+        gameClass.close();
+        gameFrameClass.close();
+        waitClass.close();
+    }
+
     @Test
     void Fix() {
-        Active active = Mockito.mock(Active.class);
+        Active active = mock(Active.class);
 
         fixer.Fix(active);
 
@@ -26,7 +47,7 @@ class FixerTest {
 
     @Test
     void RemoveActivePipe() {
-        Pipe pipe = Mockito.mock(Pipe.class);
+        Pipe pipe = mock(Pipe.class);
 
         fixer.RemoveActivePipe(pipe);
 
@@ -35,7 +56,7 @@ class FixerTest {
 
     @Test
     void CarryPump() {
-        Tank tank = Mockito.mock(Tank.class);
+        Tank tank = mock(Tank.class);
 
         fixer.CarryPump(tank);
 
@@ -44,7 +65,7 @@ class FixerTest {
 
     @Test
     void CarryPipe() {
-        Tank tank = Mockito.mock(Tank.class);
+        Tank tank = mock(Tank.class);
 
         fixer.CarryPipe(tank);
 
@@ -53,7 +74,7 @@ class FixerTest {
 
     @Test
     void ActiveGetSet() {
-        Active active = Mockito.mock(Active.class);
+        Active active = mock(Active.class);
 
         fixer.SetActive(active);
 
@@ -67,6 +88,68 @@ class FixerTest {
         fixer.SetHasActive(hasActive);
 
         assertEquals(hasActive, fixer.GetHasActive());
+    }
+
+    @Test
+    void Place() {
+        Field field1 = mock(Field.class);
+        Field field2 = mock(Field.class);
+        fixer.SetField(field1);
+
+        when(field1.GetPIn())
+                .thenReturn(field2);
+
+        Active active = mock(Active.class);
+        fixer.SetActive(active);
+
+        Game game = mock(Game.class);
+        gameClass.when(Game::Get)
+                        .thenReturn(game);
+
+        Map map = mock(Map.class);
+        when(game.GetMap())
+                .thenReturn(map);
+
+        when(map.GetDirection(field2, field1))
+                .thenReturn("right");
+
+        when(map.GetNeighbourFromDirection(field2, "right"))
+                .thenReturn(field1);
+
+        fixer.Place(field2);
+
+        verify(active).SetPOut(field1);
+        verify(field1).SetPIn(active);
+    }
+
+    @Test
+    void InteractOptions() {
+        Field field = mock(Field.class);
+        fixer.SetField(field);
+
+        Game game = mock(Game.class);
+        gameClass.when(Game::Get).thenReturn(game);
+
+        Map map = mock(Map.class);
+        when(game.GetMap()).thenReturn(map);
+
+        Field field2 = mock(Field.class);
+        ArrayList<Field> fields = new ArrayList<>();
+        fields.add(field2);
+        when(map.GetNeighbours(field))
+                .thenReturn(fields);
+
+        GameFrame gameFrame = mock(GameFrame.class);
+        gameFrameClass.when(GameFrame::Get).thenReturn(gameFrame);
+
+        when(map.GetNeighbours(field2))
+                .thenReturn(new ArrayList<>());
+
+        fixer.InteractOptions();
+
+        verify(field).FixerOptions(fixer);
+
+        verify(gameFrame).DrawField(field2);
     }
 
 }
