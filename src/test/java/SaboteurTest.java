@@ -44,7 +44,7 @@ class SaboteurTest {
         when(gameInstance.GetMap()).thenReturn(map);
 
         try (MockedStatic<Game> gameClass = mockStatic(Game.class)) {
-            gameClass.when(GameFrame::Get).thenReturn(gameInstance);
+            gameClass.when(Game::Get).thenReturn(gameInstance);
 
             var status = saboteur.GetStatus();
 
