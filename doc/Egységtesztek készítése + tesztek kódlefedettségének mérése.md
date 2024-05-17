@@ -20,3 +20,7 @@ Az elkészült jelentés a `/target/site/jacoco/index.html` fájl megnyitásáva
 A jelentések elemzése segített a le nem fedett ágak azonosításában.
 
 Több fájl lefedettsége is eléri a 100%-ot.
+
+### Jelentés
+
+![Code coverage](./Coverage.png)
