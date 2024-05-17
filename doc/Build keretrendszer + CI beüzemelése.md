@@ -4,7 +4,7 @@
 
 A build keretrendszer beüzemeléséhez a Maven-t választottuk.
 
-A [`pom.xml`](..\pom.xml) fájl tartalmazza a projekt függőségeit és a build konfigurációját.
+A [`pom.xml`](../pom.xml) fájl tartalmazza a projekt függőségeit és a build konfigurációját.
 
 A build parancs: `mvn clean package assembly:single`. Ez létrehozza a `target` mappában a futtatható `.jar` fájlt.
 
