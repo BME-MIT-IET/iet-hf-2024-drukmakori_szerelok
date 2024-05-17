@@ -5,6 +5,7 @@ import org.mockito.MockedStatic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -71,6 +72,7 @@ class TankTest {
         int rounds = 100;
         for (int i = 0; i < rounds; i++)
             tank.GeneratePipe();
+        // The number of generated pipes should be at more than zero and less than the number of rounds
         assertTrue(tank.getNumberOfPipes() > numberOfPipes);
         assertTrue(tank.getNumberOfPumps() < numberOfPipes + rounds);
     }
@@ -81,22 +83,23 @@ class TankTest {
         int rounds = 100;
         for (int i = 0; i < rounds; i++)
             tank.GeneratePump();
+        // The number of generated pumps should be at more than zero and less than the number of rounds
         assertTrue(tank.getNumberOfPumps() > numberOfPumps);
         assertTrue(tank.getNumberOfPipes() < numberOfPumps + rounds);
     }
 
     @Test
     void decreaseNumberOfPipes() {
-        var numberOfPipes = tank.getNumberOfPipes();
+        var initialNumberOfPipes = tank.getNumberOfPipes();
         tank.DecreaseNumberOfPipes();
-        assertEquals(numberOfPipes - 1, tank.getNumberOfPipes());
+        assertEquals(initialNumberOfPipes - 1, tank.getNumberOfPipes());
     }
 
     @Test
     void decreaseNumberOfPumps() {
-        var numberOfPumps = tank.getNumberOfPumps();
+        var initialNumberOfPipes = tank.getNumberOfPumps();
         tank.DecreaseNumberOfPumps();
-        assertEquals(numberOfPumps - 1, tank.getNumberOfPumps());
+        assertEquals(initialNumberOfPipes - 1, tank.getNumberOfPumps());
     }
 
     @Test
@@ -104,7 +107,7 @@ class TankTest {
         var fixer = mock(Fixer.class);
         var tankSpy = spy(tank);
         tankSpy.GivePipe(fixer);
-        verify(tankSpy, times(1)).DecreaseNumberOfPipes();
+        verify(tankSpy).DecreaseNumberOfPipes();
     }
 
     @Test
@@ -112,46 +115,63 @@ class TankTest {
         var tankSpy = spy(tank);
         var fixer = mock(Fixer.class);
         tankSpy.GivePump(fixer);
-        verify(tankSpy, times(1)).DecreaseNumberOfPumps();
+        verify(tankSpy).DecreaseNumberOfPumps();
     }
 
     @Test
     void step() {
         var tankSpy = spy(tank);
         tankSpy.Step();
-        verify(tankSpy, times(1)).GeneratePipe();
-        verify(tankSpy, times(1)).GeneratePump();
+        verify(tankSpy).GeneratePipe();
+        verify(tankSpy).GeneratePump();
     }
 
     @Test
     void acceptWater() {
         tank.AcceptWater(mock(Field.class));
-        verify(gameInstance, times(1)).InceraseFixerPoints();
+        verify(gameInstance).InceraseFixerPoints();
     }
 
     @Test
     void getStatus() {
+        var random = new Random();
+
+        var xIndex = random.nextInt(10);
+        var yIndex = random.nextInt(10);
+        var fixerCount = random.nextInt(10) + 1;
+        var saboteurCount = random.nextInt(10) + 1;
+        var numberOfPipes = random.nextInt(10);
+        var numberOfPumps = random.nextInt(10);
+
         var fixer = mock(Fixer.class);
         var saboteur = mock(Saboteur.class);
+        when(map.GetXIndex(tank)).thenReturn(xIndex);
+        when(map.GetYIndex(tank)).thenReturn(yIndex);
         when(fixer.GetStatus()).thenReturn(new ArrayList<>(List.of("", "fixer")));
         when(saboteur.GetStatus()).thenReturn(new ArrayList<>(List.of("", "saboteur")));
-        tank.SetPlayer(List.of(fixer, fixer, saboteur));
+        var players = new ArrayList<Player>();
+        for (int i = 0; i < fixerCount; i++) players.add(fixer);
+        for (int i = 0; i < saboteurCount; i++) players.add(saboteur);
+        tank.SetPlayer(players);
+        tank.setNumberOfPipes(numberOfPipes);
+        tank.setNumberOfPumps(numberOfPumps);
 
         var status = tank.GetStatus();
 
+        assertEquals(7, status.size());
         assertEquals("Tank", status.get(0));
-        assertTrue(Integer.parseInt(status.get(1)) >= 0);
-        assertTrue(Integer.parseInt(status.get(2)) >= 0);
-        assertEquals(2, Integer.parseInt(status.get(3)));
-        assertEquals(1, Integer.parseInt(status.get(4)));
-        assertEquals(tank.getNumberOfPipes(), Integer.parseInt(status.get(5)));
-        assertEquals(tank.getNumberOfPumps(), Integer.parseInt(status.get(6)));
+        assertEquals(xIndex, Integer.parseInt(status.get(1)));
+        assertEquals(yIndex, Integer.parseInt(status.get(2)));
+        assertEquals(fixerCount, Integer.parseInt(status.get(3)));
+        assertEquals(saboteurCount, Integer.parseInt(status.get(4)));
+        assertEquals(numberOfPipes, Integer.parseInt(status.get(5)));
+        assertEquals(numberOfPumps, Integer.parseInt(status.get(6)));
     }
 
     @Test
     void saboteurOptions_pass() {
         var tankSpy = spy(tank);
-        var saboteur = spy(new Saboteur("", ""));
+        var saboteur = new Saboteur("", "");
         var field = mock(Field.class);
 
         when(gameInstance.GetMap()).thenReturn(map);
@@ -185,9 +205,10 @@ class TankTest {
 
         tankSpy.SaboteurOptions(saboteur);
 
+        verify(saboteur).AddOption("move");
         verify(gameFrameInstance, times(2)).EnableActions(any());
-        verify(startField, times(1)).RemovePlayer(saboteur);
-        verify(endField, times(1)).AcceptPlayer();
+        verify(startField).RemovePlayer(saboteur);
+        verify(endField).AcceptPlayer();
     }
 
     @Test
@@ -221,17 +242,21 @@ class TankTest {
         verify(gameFrameInstance, times(hasActiveOptions.length)).EnableActions(any());
         assertEquals(0, fixer.GetActionPoints());
 
+        clearInvocations(fixer);
+
+        // Nowhere to place active
         when(field.GetReplacable()).thenReturn(false);
         fixer.SetHasActive(true);
         tankSpy.FixerOptions(fixer);
-        assertFalse(fixer.GetOptions().contains("place active"));
+        verify(fixer, never()).AddOption("place active");
 
+        // Nothing to carry
         tankSpy.setNumberOfPumps(0);
         tankSpy.setNumberOfPipes(0);
         fixer.SetHasActive(false);
         tankSpy.FixerOptions(fixer);
-        assertFalse(fixer.GetOptions().contains("carry pump"));
-        assertFalse(fixer.GetOptions().contains("carry pipe"));
+        verify(fixer, never()).AddOption("carry pump");
+        verify(fixer, never()).AddOption("carry pipe");
     }
 
     @Test
@@ -252,9 +277,10 @@ class TankTest {
 
         tankSpy.FixerOptions(fixer);
 
+        verify(fixer).AddOption("move");
         verify(gameFrameInstance, times(2)).EnableActions(any());
-        verify(startField, times(1)).RemovePlayer(fixer);
-        verify(endField, times(1)).AcceptPlayer();
+        verify(startField).RemovePlayer(fixer);
+        verify(endField).AcceptPlayer();
     }
 
     @Test
@@ -273,8 +299,9 @@ class TankTest {
 
         tankSpy.FixerOptions(fixer);
 
+        verify(fixer).AddOption("remove pipe");
         verify(gameFrameInstance, times(2)).EnableActions(any());
-        verify(fixer, times(1)).RemoveActivePipe(field);
+        verify(fixer).RemoveActivePipe(field);
     }
 
     @Test
@@ -290,11 +317,13 @@ class TankTest {
         when(field.GetReplacable()).thenReturn(true);
         when(map.GetDirection(any(), any())).thenReturn("direction");
         when(map.GetNeighbourFromDirection(any(), any())).thenReturn(field);
+        when(fixer.GetHasActive()).thenReturn(true);
 
         tankSpy.FixerOptions(fixer);
 
+        verify(fixer).AddOption("place active");
         verify(gameFrameInstance, times(2)).EnableActions(any());
-        verify(fixer, times(1)).Place(field);
+        verify(fixer).Place(field);
     }
 
     @Test
@@ -314,8 +343,9 @@ class TankTest {
 
         tankSpy.FixerOptions(fixer);
 
-        verify(gameFrameInstance, times(1)).EnableActions(any());
-        verify(fixer, times(1)).CarryPump(tankSpy);
+        verify(fixer).AddOption("carry pump");
+        verify(gameFrameInstance).EnableActions(any());
+        verify(fixer).CarryPump(tankSpy);
     }
 
     @Test
@@ -335,7 +365,8 @@ class TankTest {
 
         tankSpy.FixerOptions(fixer);
 
-        verify(gameFrameInstance, times(1)).EnableActions(any());
-        verify(fixer, times(1)).CarryPipe(tankSpy);
+        verify(fixer).AddOption("carry pipe");
+        verify(gameFrameInstance).EnableActions(any());
+        verify(fixer).CarryPipe(tankSpy);
     }
 }
