@@ -84,23 +84,23 @@ public class MainMenu extends JFrame {
             }
         });
 
-        background.setIcon(new ImageIcon("1.png"));
-        background.setDisabledIcon(new ImageIcon("1.png"));
+        background.setIcon(new ImageIcon("res/1.png"));
+        background.setDisabledIcon(new ImageIcon("res/1.png"));
         background.setEnabled(false);
         background.setOpaque(false);
         background.setContentAreaFilled(false);
         background.setBorderPainted(false);
         background.setFocusable(false);
-        start.setIcon(new ImageIcon("startgame.png"));
-        start.setDisabledIcon(new ImageIcon("startgame.png"));
+        start.setIcon(new ImageIcon("res/startgame.png"));
+        start.setDisabledIcon(new ImageIcon("res/startgame.png"));
         start.setOpaque(false);
         start.setContentAreaFilled(false);
-        settings.setIcon(new ImageIcon("settings.png"));
-        settings.setDisabledIcon(new ImageIcon("settings.png"));
+        settings.setIcon(new ImageIcon("res/settings.png"));
+        settings.setDisabledIcon(new ImageIcon("res/settings.png"));
         settings.setOpaque(false);
         settings.setContentAreaFilled(false);
-        exit.setIcon(new ImageIcon("exit.png"));
-        exit.setDisabledIcon(new ImageIcon("exit.png"));
+        exit.setIcon(new ImageIcon("res/exit.png"));
+        exit.setDisabledIcon(new ImageIcon("res/exit.png"));
         exit.setOpaque(false);
         exit.setContentAreaFilled(false);
         background.setBounds (0, 0, 512, 512);
@@ -112,7 +112,7 @@ public class MainMenu extends JFrame {
 
         Font font=new Font("Consolas", Font.BOLD, 60);
         try {
-            font = Font.createFont(Font.TRUETYPE_FONT, new File("Desert.ttf"));
+            font = Font.createFont(Font.TRUETYPE_FONT, new File("res/Desert.ttf"));
         } catch (FontFormatException e) { e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); }
         font = font.deriveFont(Font.BOLD,45);
 

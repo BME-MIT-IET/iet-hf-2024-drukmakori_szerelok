@@ -61,8 +61,8 @@ public class GameFrame extends JFrame implements ActionListener{
     public void initComponents(){
         JButton background=new JButton();
         background.setEnabled(false);
-        background.setIcon(new ImageIcon("background.png"));
-        background.setDisabledIcon(new ImageIcon("background.png"));
+        background.setIcon(new ImageIcon("res/"+"background.png"));
+        background.setDisabledIcon(new ImageIcon("res/"+"background.png"));
         background.setContentAreaFilled(false);
         background.setBorderPainted(false);
         background.setOpaque(false);
@@ -243,10 +243,10 @@ public class GameFrame extends JFrame implements ActionListener{
         background.setBounds (0, 0, 1500, 900);
         getContentPane().add(jp);
 
-        ImageIcon leftImg=new ImageIcon("left.png");
-        ImageIcon disabledLeftImg=new ImageIcon("leftdisabled.png");
-        ImageIcon btn=new ImageIcon("button.png");
-        ImageIcon disabledbtn=new ImageIcon("disabledbutton.png");
+        ImageIcon leftImg=new ImageIcon("res/"+"left.png");
+        ImageIcon disabledLeftImg=new ImageIcon("res/"+"leftdisabled.png");
+        ImageIcon btn=new ImageIcon("res/"+"button.png");
+        ImageIcon disabledbtn=new ImageIcon("res/"+"disabledbutton.png");
         SetButtonStyle(left, leftImg, disabledLeftImg, 0);
         SetButtonStyle(right, leftImg, disabledLeftImg, 180);
         SetButtonStyle(up, leftImg, disabledLeftImg, 90);
@@ -294,22 +294,22 @@ public class GameFrame extends JFrame implements ActionListener{
         playerBackground.setBorderPainted(false);
         playerBackground.setOpaque(false);
         playerBackground.setBounds (37, 742, 470, 146);
-        playerBackground.setIcon(new ImageIcon("bigbutton.png"));
-        playerBackground.setDisabledIcon(new ImageIcon("bigbutton.png"));
+        playerBackground.setIcon(new ImageIcon("res/bigbutton.png"));
+        playerBackground.setDisabledIcon(new ImageIcon("res/bigbutton.png"));
         fieldBackground.setEnabled(false);
         fieldBackground.setContentAreaFilled(false);
         fieldBackground.setBorderPainted(false);
         fieldBackground.setOpaque(false);
         fieldBackground.setBounds (572, 742, 470, 146);
-        fieldBackground.setIcon(new ImageIcon("bigbutton.png"));
-        fieldBackground.setDisabledIcon(new ImageIcon("bigbutton.png"));
+        fieldBackground.setIcon(new ImageIcon("res/bigbutton.png"));
+        fieldBackground.setDisabledIcon(new ImageIcon("res/bigbutton.png"));
         pointBackground.setEnabled(false);
         pointBackground.setContentAreaFilled(false);
         pointBackground.setBorderPainted(false);
         pointBackground.setOpaque(false);
         pointBackground.setBounds (998, 742, 470, 146);
-        pointBackground.setIcon(new ImageIcon("middlebutton.png"));
-        pointBackground.setDisabledIcon(new ImageIcon("middlebutton.png"));
+        pointBackground.setIcon(new ImageIcon("res/middlebutton.png"));
+        pointBackground.setDisabledIcon(new ImageIcon("res/middlebutton.png"));
     }
 
     public void SetButtonStyle(JButton button, ImageIcon img, ImageIcon disabledimg, int angle ){
@@ -337,8 +337,8 @@ public class GameFrame extends JFrame implements ActionListener{
             DrawFieldIcon(i, player.GetField());
         }
 
-        playericon.setIcon(new ImageIcon(player.GetPictureName()));
-        playericon.setDisabledIcon(new ImageIcon(player.GetPictureName()));
+        playericon.setIcon(new ImageIcon("res/"+player.GetPictureName()));
+        playericon.setDisabledIcon(new ImageIcon("res/"+player.GetPictureName()));
     }
 
     /**
@@ -623,7 +623,7 @@ public class GameFrame extends JFrame implements ActionListener{
 
 
     public void SetIcon(int layer, String png){
-        ImageIcon img = new ImageIcon(png+".png");
+        ImageIcon img = new ImageIcon("res/"+png+".png");
         fieldicon[layer].setIcon(img);
         fieldicon[layer].setDisabledIcon(img);
     }

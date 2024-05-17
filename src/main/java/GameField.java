@@ -37,8 +37,8 @@ public class GameField extends JPanel{
      * @param png png neve
      */
     public void SetBackground(int x, int y, String png){
-        fields[x][y].setIcon( new ImageIcon(png+".png"));
-        fields[x][y].setDisabledIcon( new ImageIcon(png+".png"));
+        fields[x][y].setIcon( new ImageIcon("res/"+png+".png"));
+        fields[x][y].setDisabledIcon( new ImageIcon("res/"+png+".png"));
     }
     /**
      *
