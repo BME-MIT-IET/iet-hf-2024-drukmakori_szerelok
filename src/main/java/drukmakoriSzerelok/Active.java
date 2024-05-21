@@ -1,3 +1,5 @@
+package drukmakoriSzerelok;
+
 /**
  * Absztrakt osztaly, A jatek aktev elemeinek absztrakt ososztaly, amelybol leszarmazik a pumpa, illetve a cso.
  * Itt szerepelnek a kozos tulajdonsagaik az aktiv elemeknek, ilyen a mozgathatosag es az elromlas is.

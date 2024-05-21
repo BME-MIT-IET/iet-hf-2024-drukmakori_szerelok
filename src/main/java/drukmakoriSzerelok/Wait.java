@@ -1,3 +1,5 @@
+package drukmakoriSzerelok;
+
 /**
  * Várakozast iranyito es vegrehajto osztaly.
  */
