@@ -32,11 +32,11 @@ public class Game implements Steppable {
     /**
      * a jatekban szereplo jatekosok listaja
      */
-    private final ArrayList<Player> players;
+    private ArrayList<Player> players;
     /**
      * kezeli a koroket
      */
-    private final ActionHandler actionHandler = new ActionHandler();
+    private ActionHandler actionHandler = new ActionHandler();
     /**
      * a jatek vegi uzenet
      */
