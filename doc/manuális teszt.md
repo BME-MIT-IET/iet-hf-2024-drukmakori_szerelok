@@ -10,10 +10,10 @@ Ennek hatására az aktív játékos egyet a kiválasztott irányba (jelen esetb
 Az elvárt viselkedés történt.
 
 #### Lépés előtti kép
-![](t1a.png)
+![](images/t1a.png)
 
 #### Lépés utáni kép
-![](t1b.png)
+![](images/t1b.png)
 
 ## 2. Teszt - Pumpa irány állítás
 ### Leírás: 
@@ -24,10 +24,10 @@ Ennek hatására a pumpa, amin az aktív játékos áll bemenő és kimenő irá
 Az elvárt viselkedés történt.
 
 #### Pumpa állítás előtti kép
-![](t2a.png)
+![](images/t2a.png)
 
 #### Pumpa állítás utáni kép
-![](t2b.png)
+![](images/t2b.png)
 
 ## 3. Teszt - Pumpa helyes működése
 ### Leírás: 
@@ -38,7 +38,7 @@ A pumpa csak az újonnan megadott irányból szívja a vizet és csak a megadott
 Az elvárt viselkedés történt.
 
 #### Pumpa helyes működése kép
-![](t3.png)
+![](images/t3.png)
 
 ## 4. Teszt - Cső szabotálás
 ### Leírás: 
@@ -49,10 +49,10 @@ Ennek hatására a cső, amin az aktív játékos áll kilyukad, és nem folyik 
 Az elvárt viselkedés történt.
 
 #### Cső szabotálás előtti kép
-![](t4a.png)
+![](images/t4a.png)
 
 #### Cső szabotálás utáni kép
-![](t4b.png)
+![](images/t4b.png)
 
 ## 5. Teszt - Cső javítás
 ### Leírás: 
@@ -63,10 +63,10 @@ Ennek hatására a cső, amin az aktív játékos áll megjavul, és megerősít
 Az elvárt viselkedés történt.
 
 #### Cső javítás előtti kép
-![](t5a.png)
+![](images/t5a.png)
 
 #### Cső javítás utáni kép
-![](t5b.png)
+![](images/t5b.png)
 
 ## 6. Teszt - Pumpa javítás
 ### Leírás: 
@@ -77,10 +77,10 @@ Ennek hatására a pumpa, amin az aktív játékos áll megjavul, és a követke
 Az elvárt viselkedés történt.
 
 #### Pumpa javítás előtti kép
-![](t6a.png)
+![](images/t6a.png)
 
 #### Pumpa javítás utáni kép
-![](t6b.png)
+![](images/t6b.png)
 
 ## 7. Teszt - Megerősített cső szabotálása
 ### Leírás: 
@@ -91,7 +91,7 @@ Az ilyen csövet nem lehet kilyukasztani, tehát a Sabotage pipe gomb ilyen estb
 Az elvárt viselkedés történt.
 
 #### Megerősített cső szabotálása kép
-![](t7.png)
+![](images/t7.png)
 
 ## 8. Teszt - Ragadóssá tevés
 ### Leírás: 
@@ -102,10 +102,10 @@ Ennek hatására a cső, amin az aktív játékos áll ragadós hatású lesz, �
 Az elvárt viselkedés történt.
 
 #### Ragadóssá tevés előtti kép
-![](t8a.png)
+![](images/t8a.png)
 
 #### Ragadóssá tevés utáni kép
-![](t8b.png)
+![](images/t8b.png)
 
 ## 9. Teszt - Beragadt játékos mozgása
 ### Leírás: 
@@ -116,7 +116,7 @@ Az ilyen csőröl a játékos nem mozoghat el, tehát a Move gomb ilyen esetben 
 Az elvárt viselkedés történt.
 
 #### Beragadt játékos mozgása kép
-![](t9.png)
+![](images/t9.png)
 
 ## 10. Teszt - Csúszóssá tevés
 ### Leírás: 
@@ -127,10 +127,10 @@ Ennek hatására a cső, amin az aktív játékos áll csúszós hatású lesz, 
 Az elvárt viselkedés történt.
 
 #### Csúszóssá tevés előtti kép
-![](t10a.png)
+![](images/t10a.png)
 
 #### Csúszóssá tevés utáni kép
-![](t10b.png)
+![](images/t10b.png)
 
 ## 11. Teszt - Csúszós csőre lépés
 ### Leírás: 
@@ -141,10 +141,10 @@ Az ilyen csőre lépve az aktív játékos a szomszédos mezők valamelyikére k
 Az elvárt viselkedés történt.
 
 #### Csúszós csőre lépés előtti kép
-![](t11a.png)
+![](images/t11a.png)
 
 #### Csúszós csőre lépés utáni kép
-![](t11b.png)
+![](images/t11b.png)
 
 ## 12. Teszt - Cső elvétele
 ### Leírás: 
@@ -155,10 +155,10 @@ Ennek hatására az aktív játékosnál lesz egy cső, a ciszternában, amin á
 Az elvárt viselkedés történt.
 
 #### Cső elvétele előtti kép
-![](t12a.png)
+![](images/t12a.png)
 
 #### Cső elvétele utáni kép
-![](t12b.png)
+![](images/t12b.png)
 
 ## 13. Teszt - Pumpa elvétele
 ### Leírás: 
@@ -169,10 +169,10 @@ Ennek hatására az aktív játékosnál lesz egy pumpa, a ciszternában, amin �
 Az elvárt viselkedés történt.
 
 #### Pumpa elvétele előtti kép
-![](t13a.png)
+![](images/t13a.png)
 
 #### Pumpa elvétele utáni kép
-![](t13b.png)
+![](images/t13b.png)
 
 ## 14. Teszt - Lent lévő cső felvétele
 ### Leírás: 
@@ -183,10 +183,10 @@ Ennek hatására az aktív játékosnál lesz egy cső (aktív elem), és a kiv�
 Az elvárt viselkedés történt.
 
 #### Felvétel előtti kép
-![](t14a.png) 
+![](images/t14a.png) 
 
 #### Felvétel utáni kép
-![](t14b.png) 
+![](images/t14b.png) 
 
 ## 15. Teszt - Cső lerakása
 ### Leírás: 
@@ -197,10 +197,10 @@ Ennek hatására az aktív játékosnál nem lesz aktív elem (jelen esetben cs�
 Az elvárt viselkedés történt.
 
 #### Lerakás előtti kép
-![](t15a.png) 
+![](images/t15a.png) 
 
 #### Lerakás utáni kép
-![](t15b.png) 
+![](images/t15b.png) 
 
 ## 16. Teszt - Pumpa lerakása
 ### Leírás: 
@@ -211,10 +211,10 @@ Ennek hatására az aktív játékosnál nem lesz aktív elem (jelen esetben pum
 Az elvárt viselkedés történt.
 
 #### Lerakás előtti kép
-![](t16a.png) 
+![](images/t16a.png) 
 
 #### Lerakás utáni kép
-![](t16b.png) 
+![](images/t16b.png) 
 
 ## 17. Teszt - Passz
 ### Leírás: 
@@ -225,10 +225,10 @@ Ennek hatására az aktív játékos összes hátralévő akcióját elveszti, �
 Az elvárt viselkedés történt.
 
 #### Passz előtti kép
-![](t17a.png) 
+![](images/t17a.png) 
 
 #### Passz utáni kép
-![](t17b.png) 
+![](images/t17b.png) 
 
 ## 18. Teszt - Foglalalt csőre lépés
 ### Leírás: 
@@ -238,7 +238,7 @@ Az ilyen csőre a játékos nem léphet, tehát a Move gomb ilyen esetben le van
 ### Történt viselkedés:
 Az elvárt viselkedés történt.
 
-![](t18.png) 
+![](images/t18.png) 
 
 ## 19. Teszt - Ellenfelek találkozás
 ### Leírás: 
@@ -249,10 +249,10 @@ Az ilyen pumpán ilyen esetben látszódik, hogy egyszerre mindkét csapatból t
 Az elvárt viselkedés történt.
 
 #### Lépés előtti kép
-![](t19a.png) 
+![](images/t19a.png) 
 
 #### Lépés utáni kép
-![](t19b.png)
+![](images/t19b.png)
 
 ## 20. Teszt - Lyukas cső vízfolyás
 ### Leírás: 
@@ -263,10 +263,10 @@ Egy lyukas cső nem szállítja/adja tovább a vizet a következő mezőnek, hel
 Az elvárt viselkedés történt.
 
 #### Kifolyás előtti kép
-![](t20a.png) 
+![](images/t20a.png) 
 
 #### Kifolyás utáni kép
-![](t20b.png)
+![](images/t20b.png)
 
 ## 21. Teszt - Ciszternába vízfolyás
 ### Leírás: 
@@ -277,10 +277,10 @@ Egy ciszternába csatlakozó cső nem szállítja/adja tovább a vizet, helyette
 Az elvárt viselkedés történt.
 
 #### Ciszternába folyás előtti kép
-![](t21a.png) 
+![](images/t21a.png) 
 
 #### Ciszternába folyás utáni kép
-![](t21b.png)
+![](images/t21b.png)
 
 ## 22. Teszt - Szabotőr győzelem
 ### Leírás: 
@@ -290,7 +290,7 @@ A szabotőrök pontszáma eléri a beállított győzelemhez kellő pontszámot,
 ### Történt viselkedés:
 Az elvárt viselkedés történt.
 
-![](t22.png)
+![](images/t22.png)
 
 ## 23. Teszt - Szerelő győzelem
 ### Leírás: 
@@ -300,7 +300,7 @@ A szerelők pontszáma eléri a beállított győzelemhez kellő pontszámot, am
 ### Történt viselkedés:
 Az elvárt viselkedés történt.
 
-![](t23.png)
+![](images/t23.png)
 
 ## Összefoglalás
 

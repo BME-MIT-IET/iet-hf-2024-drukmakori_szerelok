@@ -23,4 +23,4 @@ Több fájl lefedettsége is eléri a 100%-ot.
 
 ### Jelentés
 
-![Code coverage](./Coverage.png)
+![Code coverage](images/Coverage.png)
